@@ -16,13 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::name('app')->middleware(['auth'])->group(function(){
     Route::post('/category', [CategoryController::class, 'store'])->name('.category.store');
-    Route::post('/', [CategoryController::class, 'index'])->name('.category.index');
+    Route::get('/category', [CategoryController::class, 'index'])->name('.category.index');
+    Route::get('/category/create', [CategoryController::class, 'create'])->name('.category.create');
     Route::get('/home', [HomeController::class, 'index'])->name('.home');
 });
 

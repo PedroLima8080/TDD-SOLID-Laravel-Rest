@@ -24,6 +24,14 @@ class CategoryController extends Controller
             exit;
         }
 
-        return redirect()->route('app.category.index');
+    }
+
+    public function index(){
+        $categories = Category::orderBy('title', 'ASC')->get();
+        return view('category.index', compact('categories'));
+    }
+
+    public function create(){
+        return view('category.create');
     }
 }

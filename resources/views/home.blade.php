@@ -12,5 +12,10 @@
                 Welcome, {{ Auth::user()->name }}
             </h5>
         </div>
+        <div class="links">
+            <ul>
+                <li><a href="{{ route('app.category.index') }}">Categorias</a></li>
+            </ul>
+        </div>
     </div>
 @endsection
