@@ -1,0 +1,15 @@
+body,
+html {
+    min-height: 100vh;
+    background-color: whitesmoke;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.form {
+    background-color: rgb(252, 252, 252);
+}

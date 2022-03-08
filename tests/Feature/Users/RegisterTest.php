@@ -7,6 +7,7 @@ use Carbon\Factory;
 use Database\Factories\UserFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Tests\Builders\UserBuilder;
 use Tests\TestCase;
 
 class RegisterTest extends TestCase
@@ -25,7 +26,7 @@ class RegisterTest extends TestCase
     /** @test */
     public function it_should_saved_in_database()
     {
-        $user = User::factory()->make();
+        $user = (new UserBuilder)->make();
         $this->post(route('auth.register', $user->toArray()))
             ->assertRedirect(route('auth.login'));
 
@@ -40,10 +41,24 @@ class RegisterTest extends TestCase
     /** @test */
     public function it_should_email_is_unique()
     {
-        $user = User::factory()->make();
+        $user = (new UserBuilder)->make();
         $user->email = 'ph.lima014@gmail.com';
 
         $this->post(route('auth.register', $user->toArray()));
         $this->post(route('auth.register', $user->toArray()))->assertSessionHasErrors(['email' => trans('validation.unique', ['attribute' => 'email'])]);
+    }
+
+    /** @test */
+    public function it_should_return_error_for_required_fields_when_register()
+    {
+        $user = (new UserBuilder)->make();
+        $user->name = null;
+        $user->email = null;
+        $user->password = null;
+
+        $this->post(route('auth.register', $user->toArray()))
+            ->assertSessionHasErrors(['name' => trans('validation.required', ['attribute' => 'name'])])
+            ->assertSessionHasErrors(['email' => trans('validation.required', ['attribute' => 'email'])])
+            ->assertSessionHasErrors(['password' => trans('validation.required', ['attribute' => 'password'])]);
     }
 }

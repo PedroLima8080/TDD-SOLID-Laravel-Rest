@@ -12,9 +12,16 @@ use PDOException;
 
 class UserController extends Controller
 {
+    public function create(){
+        return view('auth.register');
+    }
+
     public function register(Request $request){
         $request->validate([
-            'email' => 'required|unique:users'
+            'name' => 'required',
+            'email' => 'required|unique:users',
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required',
         ]);
 
         DB::beginTransaction();
@@ -33,6 +40,7 @@ class UserController extends Controller
     }
 
     public function login(){
+        return view('auth.login');
     }
 
     public function authenticate(Request $request){
@@ -41,8 +49,9 @@ class UserController extends Controller
 
         $user = User::where('email', $email)->first();
 
-        if(!$user)
+        if(!$user){
             return redirect()->route('auth.login')->withErrors(['message' => 'Email or Password is invalid!']);
+        }
 
         if(Hash::check($password, $user->password)){
             Auth::loginUsingId($user->id);
@@ -52,5 +61,4 @@ class UserController extends Controller
         return redirect()->route('auth.login')->withErrors(['message' => 'Email or Password is invalid!']);
     }
 
-    public function create(){}
 }
