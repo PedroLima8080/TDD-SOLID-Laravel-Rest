@@ -19,8 +19,8 @@ class RegisterTest extends TestCase
         /** @var User $user */
         $user = User::factory()->create();
 
-        $this->actingAs($user)->get(route('auth.login'))->assertRedirect(route('home'));
-        $this->actingAs($user)->get(route('auth.register'))->assertRedirect(route('home'));
+        $this->actingAs($user)->get(route('auth.login'))->assertRedirect(route('app.home'));
+        $this->actingAs($user)->get(route('auth.register'))->assertRedirect(route('app.home'));
     }
 
     /** @test */

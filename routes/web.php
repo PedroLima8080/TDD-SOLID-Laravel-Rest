@@ -23,9 +23,9 @@ Route::get('/', function () {
 Route::name('app')->middleware(['auth'])->group(function(){
     Route::post('/category', [CategoryController::class, 'store'])->name('.category.store');
     Route::post('/', [CategoryController::class, 'index'])->name('.category.index');
+    Route::get('/home', [HomeController::class, 'index'])->name('.home');
 });
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::name('auth')->middleware(['guest'])->group(function(){
     Route::get('/register', [UserController::class, 'create'])->name('.create');

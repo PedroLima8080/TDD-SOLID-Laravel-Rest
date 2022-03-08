@@ -16,8 +16,8 @@ class Login extends TestCase
          /** @var User $user */
          $user = User::factory()->create();
  
-         $this->actingAs($user)->get(route('auth.login'))->assertRedirect(route('home'));
-         $this->actingAs($user)->get(route('auth.register'))->assertRedirect(route('home'));
+         $this->actingAs($user)->get(route('auth.login'))->assertRedirect(route('app.home'));
+         $this->actingAs($user)->get(route('auth.register'))->assertRedirect(route('app.home'));
      }
 
      /** @test */
@@ -28,7 +28,7 @@ class Login extends TestCase
          $this->post(route('auth.register', $user->toArray())); //registra
          
          $this->post(route('auth.login'), ['email' => $user->email, 'password' => $user->password])
-             ->assertRedirect(route('home'));
+             ->assertRedirect(route('app.home'));
      }
  
      /** @test */

@@ -55,7 +55,7 @@ class UserController extends Controller
 
         if(Hash::check($password, $user->password)){
             Auth::loginUsingId($user->id);
-            return redirect()->route('home');
+            return redirect()->route('app.home');
         }
 
         return redirect()->route('auth.login')->withErrors(['message' => 'Email or Password is invalid!']);
