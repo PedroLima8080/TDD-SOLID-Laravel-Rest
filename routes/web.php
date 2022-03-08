@@ -23,6 +23,8 @@ Route::name('app')->middleware(['auth'])->group(function(){
     Route::get('/category', [CategoryController::class, 'index'])->name('.category.index');
     Route::get('/category/create', [CategoryController::class, 'create'])->name('.category.create');
     Route::get('/home', [HomeController::class, 'index'])->name('.home');
+
+    Route::post('/logout', [UserController::class, 'logout'])->name('.logout');
 });
 
 

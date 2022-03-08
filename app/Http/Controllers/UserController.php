@@ -61,4 +61,12 @@ class UserController extends Controller
         return redirect()->route('auth.login')->withErrors(['message' => 'Email or Password is invalid!']);
     }
 
+    public function logout(){
+        if(Auth::check()){
+            Auth::logout();
+        }
+
+        return redirect()->route('auth.login');
+    }
+
 }
