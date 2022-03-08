@@ -23,6 +23,7 @@
                             <td>{{ $category['id'] }}</td>
                             <td>{{ $category['title'] }}</td>
                             <td style="width: 220px">
+                                <a href="{{ route('app.category.edit', $category['id']) }}" class="btn btn-primary">Edit Category</a>
                                 <form action="{{ route('app.category.destroy', ['id' => $category['id']]) }}" method="post">
                                     @csrf
                                     @method('DELETE')

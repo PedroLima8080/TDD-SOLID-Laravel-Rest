@@ -68,4 +68,9 @@ class CategoryController extends Controller
             exit;
         }
     }
+
+    public function edit($id){
+        $category = Category::findOrFail($id);
+        return view('category.edit', compact('category'));
+    }
 }
