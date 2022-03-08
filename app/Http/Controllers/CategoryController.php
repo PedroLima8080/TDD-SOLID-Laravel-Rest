@@ -49,4 +49,23 @@ class CategoryController extends Controller
             exit;
         }
     }
+
+    public function update($id, Request $request){
+        $request->validate([
+            'title' => "required|unique:categories,title,$id"
+        ]);
+
+        $category = Category::findOrFail($id);
+
+        DB::beginTransaction();
+        try {
+            $category->update($request->all());
+            DB::commit();
+            return redirect()->route('app.category.index');
+        } catch (\PDOException $e) {
+            echo $e->getMessage();
+            DB::rollBack();
+            exit;
+        }
+    }
 }
