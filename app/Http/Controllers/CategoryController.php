@@ -34,4 +34,19 @@ class CategoryController extends Controller
     public function create(){
         return view('category.create');
     }
+
+    public function destroy($id){
+        $category = Category::findOrFail($id);
+
+        DB::beginTransaction();
+        try {
+            $category->delete();
+            DB::commit();
+            return redirect()->route('app.category.index');
+        } catch (\PDOException $e) {
+            echo $e->getMessage();
+            DB::rollBack();
+            exit;
+        }
+    }
 }

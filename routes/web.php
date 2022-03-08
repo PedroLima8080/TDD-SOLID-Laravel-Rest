@@ -22,6 +22,7 @@ Route::name('app')->middleware(['auth'])->group(function(){
     Route::post('/category', [CategoryController::class, 'store'])->name('.category.store');
     Route::get('/category', [CategoryController::class, 'index'])->name('.category.index');
     Route::get('/category/create', [CategoryController::class, 'create'])->name('.category.create');
+    Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('.category.destroy');
     Route::get('/home', [HomeController::class, 'index'])->name('.home');
 
     Route::post('/logout', [UserController::class, 'logout'])->name('.logout');
