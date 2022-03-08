@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="min-vh-100 d-flex justify-content-center align-items-center">
-    <div class="border py-4 px-5 rounded form">
-        <h1 class="text-center">Registre-se Aqui</h1>
+    <div class="border py-4 px-5 rounded form w-50">
+        <h1 class="text-center">Faça Login</h1>
         <hr class="my-3">
 
         @if ($errors->has('message'))

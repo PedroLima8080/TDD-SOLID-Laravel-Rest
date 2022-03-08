@@ -4,6 +4,13 @@
     <div class="p-5">
         <h1 class="text-center">Home</h1>
         <hr class="my-4">
+        <div class="buttons">
+            <form action="{{ route('app.logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-danger">Logout</button>
+            </form>
+        </div>
+        <hr class="my-4">
         <div class="system-informations">
             
         </div>
