@@ -14,6 +14,7 @@
                     <tr>
                         <th>#</th>
                         <th>Title</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -21,6 +22,13 @@
                         <tr>
                             <td>{{ $category['id'] }}</td>
                             <td>{{ $category['title'] }}</td>
+                            <td style="width: 220px">
+                                <form action="{{ route('app.category.destroy', ['id' => $category['id']]) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Remove Category</button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
