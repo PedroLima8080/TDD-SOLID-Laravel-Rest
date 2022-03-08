@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -20,8 +21,11 @@ Route::get('/', function () {
 });
 
 Route::name('app')->middleware(['auth'])->group(function(){
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::post('/category', [CategoryController::class, 'store'])->name('.category.store');
+    Route::post('/', [CategoryController::class, 'index'])->name('.category.index');
 });
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::name('auth')->middleware(['guest'])->group(function(){
     Route::get('/register', [UserController::class, 'create'])->name('.create');
