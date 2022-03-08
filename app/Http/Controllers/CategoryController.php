@@ -27,7 +27,7 @@ class CategoryController extends Controller
     }
 
     public function index(){
-        $categories = Category::orderBy('title', 'ASC')->get();
+        $categories = Category::orderBy('title', 'ASC')->with(['products'])->get();
         return view('category.index', compact('categories'));
     }
 
