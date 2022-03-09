@@ -14,7 +14,11 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ str_starts_with(Route::currentRouteName(), 'app.category') ? 'active' : '' }}"
-                        href="{{ route('app.category.index') }}">Categorias</a>
+                        href="{{ route('app.category.index') }}">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ str_starts_with(Route::currentRouteName(), 'app.product') ? 'active' : '' }}"
+                        href="{{ route('app.product.index') }}">Products</a>
                 </li>
             </ul>
             <form action="{{ route('app.logout') }}" method="POST">

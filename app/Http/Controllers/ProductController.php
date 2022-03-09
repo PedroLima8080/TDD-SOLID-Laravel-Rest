@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -25,5 +26,15 @@ class ProductController extends Controller
             DB::rollBack();
             exit;
         }
+    }
+
+    public function index(){
+        $products = Product::orderBy('title', 'ASC')->get();
+        return view('product.index', compact('products'));
+    }
+
+    public function create(){
+        $categories = Category::orderBy('title', 'ASC')->get();
+        return view('product.create', compact('categories'));
     }
 }
