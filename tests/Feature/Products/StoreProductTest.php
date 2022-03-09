@@ -87,4 +87,16 @@ class StoreProductTest extends TestCase
             ->assertStatus(302)
             ->assertSessionHasErrors(['title' => trans('validation.unique', ['attribute' => 'title'])]);
     }
+
+    /** @test */
+    public function it_category_of_product_exist()
+    {
+        $user = (new UserBuilder)->create();
+        $product = (new ProductBuilder)->make();
+        $product->category_id = 1e100;
+
+        $this->actingAs($user)->post(route('app.product.store'), $product->toArray())
+            ->assertStatus(302)
+            ->assertSessionHasErrors(['category_id' => trans('validation.exists', ['attribute' => 'category id'])]);
+    }
 }
