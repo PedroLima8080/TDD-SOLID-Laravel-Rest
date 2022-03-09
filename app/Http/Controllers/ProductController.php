@@ -59,4 +59,26 @@ class ProductController extends Controller
             exit;
         }
     }
+
+    public function edit($id){
+        $product = Product::findOrFail($id);
+        $categories = Category::orderBy('title', 'ASC')->get();
+        
+        return view('product.edit', compact('categories', 'product'));
+    }
+    
+    public function destroy($id){
+        $product = Product::findOrFail($id);
+
+        DB::beginTransaction();
+        try {
+            $product->delete();
+            DB::commit();
+            return redirect()->route('app.product.index');
+        } catch (\PDOException $e) {
+            echo $e->getMessage();
+            DB::rollBack();
+            exit;
+        }
+    }
 }

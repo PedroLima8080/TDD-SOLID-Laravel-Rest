@@ -28,9 +28,11 @@ Route::name('app')->middleware(['auth'])->group(function(){
     Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('.category.destroy');
 
     Route::post('/product', [ProductController::class, 'store'])->name('.product.store');
+    Route::get('/product/{id}', [ProductController::class, 'edit'])->name('.product.edit');
     Route::put('/product/{id}', [ProductController::class, 'update'])->name('.product.update');
     Route::get('/create/product', [ProductController::class, 'create'])->name('.product.create');
     Route::get('/product', [ProductController::class, 'index'])->name('.product.index');
+    Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('.product.destroy');
 
     Route::get('/home', [HomeController::class, 'index'])->name('.home');
 

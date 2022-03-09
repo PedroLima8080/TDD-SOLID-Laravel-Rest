@@ -30,12 +30,11 @@
                             <td>{{ $product['title'] }}</td>
                             <td>{{ $product['description'] }}</td>
                             <td>{{ $product['quantity'] }}</td>
-                            <td>{{ number_format($product['price'], 2, ',', '.') }}</td>
+                            <td>{{ $product['price'] }}</td>
                             <td>{{ $product['category']['title'] }}</td>
                             <td class="d-flex w-100 justify-content-end">
-                                &nbsp;
+                                <a href="{{ route('app.product.edit', $product['id']) }}" class="btn btn-primary me-2"><i class="fa-solid fa-pen"></i></a>
                                 {{--
-                                <a href="{{ route('app.category.edit', $category['id']) }}" class="btn btn-primary me-2"><i class="fa-solid fa-pen"></i></a>
                                 <form action="{{ route('app.category.destroy', ['id' => $category['id']]) }}" method="post">
                                     @csrf
                                     @method('DELETE')
