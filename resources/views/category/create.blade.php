@@ -1,7 +1,7 @@
-@extends('template.default')
+@extends('template.main')
 
 @section('content')
-    <div class="p-5">
+    <div class="px-5 mt-4">
         <h1 class="text-center">Cadastrar categoria</h1>
         <hr class="my-4">
         <div class="buttons">

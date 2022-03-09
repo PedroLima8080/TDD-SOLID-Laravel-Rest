@@ -1,12 +1,12 @@
-@extends('template.default')
+@extends('template.main')
 
 @section('content')
-    <div class="p-5">
-        <h1 class="text-center">Edit Category</h1>
-        <hr class="my-4">
-        <div class="buttons">
-            <a href="{{ route('app.category.index') }}" class="btn btn-secondary">Voltar</a>
+    <div class="px-5 mt-4">
+        <div class="d-flex justify-content-center align-items-center">
+            <a href="{{ route('app.category.index') }}" class="btn btn-secondary circle-button"><i class="fa-solid fa-chevron-left"></i></a>
+            <h1 class="text-center me-auto ms-auto">Categorias</h1>
         </div>
+        <hr class="my-4">
         <form action="{{ route('app.category.update', ['id' => $category['id']]) }}" method="POST" class="w-50 mx-auto">
             @method('PUT')
             @csrf
