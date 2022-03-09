@@ -34,13 +34,11 @@
                             <td>{{ $product['category']['title'] }}</td>
                             <td class="d-flex w-100 justify-content-end">
                                 <a href="{{ route('app.product.edit', $product['id']) }}" class="btn btn-primary me-2"><i class="fa-solid fa-pen"></i></a>
-                                {{--
-                                <form action="{{ route('app.category.destroy', ['id' => $category['id']]) }}" method="post">
+                                <form action="{{ route('app.product.destroy', ['id' => $product['id']]) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
                                 </form>
-                                --}}
                             </td>
                         </tr>
                     @endforeach
