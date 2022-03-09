@@ -2,11 +2,11 @@
 
 @section('content')
     <div class="px-5 mt-4">
-        <h1 class="text-center">Create Product</h1>
-        <hr class="my-4">
-        <div class="buttons">
-            <a href="{{ route('app.product.index') }}" class="btn btn-secondary">Voltar</a>
+        <div class="d-flex justify-content-center align-items-center">
+            <a href="{{ route('app.product.index') }}" class="btn btn-secondary circle-button"><i class="fa-solid fa-chevron-left"></i></a>
+            <h1 class="text-center me-auto ms-auto">Create Product</h1>
         </div>
+        <hr class="my-4">
         <form action="{{ route('app.product.store') }}" method="POST" class="w-50 mx-auto">
             @csrf
             <div class="row">

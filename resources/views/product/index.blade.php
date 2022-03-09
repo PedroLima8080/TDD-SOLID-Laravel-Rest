@@ -29,6 +29,7 @@
                             <td>{{ $product['description'] }}</td>
                             <td>{{ $product['quantity'] }}</td>
                             <td class="d-flex w-100 justify-content-end">
+                                &nbsp;
                                 {{--
                                 <a href="{{ route('app.category.edit', $category['id']) }}" class="btn btn-primary me-2"><i class="fa-solid fa-pen"></i></a>
                                 <form action="{{ route('app.category.destroy', ['id' => $category['id']]) }}" method="post">
