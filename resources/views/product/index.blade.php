@@ -18,6 +18,7 @@
                         <th>Title</th>
                         <th>Description</th>
                         <th>Quantity</th>
+                        <th>Category</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -28,6 +29,7 @@
                             <td>{{ $product['title'] }}</td>
                             <td>{{ $product['description'] }}</td>
                             <td>{{ $product['quantity'] }}</td>
+                            <td>{{ $product['category']['title'] }}</td>
                             <td class="d-flex w-100 justify-content-end">
                                 &nbsp;
                                 {{--
