@@ -3,10 +3,13 @@
 namespace Tests\Feature\Categories;
 
 use App\Models\Category;
+use App\Models\Product;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Tests\Builders\ProductBuilder;
+use Tests\Builders\UserBuilder;
 use Tests\TestCase;
 
 class StoreCategoryTest extends TestCase
@@ -64,5 +67,4 @@ class StoreCategoryTest extends TestCase
             'updated_at' => now(),
         ]);
     }
-
 }

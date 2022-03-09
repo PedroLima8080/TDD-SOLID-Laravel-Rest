@@ -28,4 +28,9 @@ class ProductBuilder{
         $this->fields['title'] = $title;
         return $this;
     }
+
+    public function setCategoryId($categoryId){
+        $this->fields['category_id'] = $categoryId;
+        return $this;
+    }
 }
