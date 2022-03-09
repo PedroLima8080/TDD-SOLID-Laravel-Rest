@@ -38,4 +38,25 @@ class ProductController extends Controller
         $categories = Category::orderBy('title', 'ASC')->get();
         return view('product.create', compact('categories'));
     }
+
+    public function update($id, Request $request){
+        $request->validate([
+            'title' => "required|unique:products,title,$id",
+            'price' => 'required|integer|min:0',
+            'category_id' => 'required|exists:categories,id'
+        ]);
+
+        $product = Product::findOrFail($id);
+        
+        DB::beginTransaction();
+        try {
+            $product->update($request->all());
+            DB::commit();
+            return redirect()->route('app.product.index');
+        } catch (\PDOException $e) {
+            echo $e->getMessage();
+            DB::rollBack();
+            exit;
+        }
+    }
 }
