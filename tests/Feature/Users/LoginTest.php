@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\Builders\UserBuilder;
 use Tests\TestCase;
 
-class Login extends TestCase
+class LoginTest extends TestCase
 {
      /** @test */
      public function it_should_guest_to_access_login_routes()
