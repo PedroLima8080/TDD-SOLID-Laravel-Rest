@@ -32,7 +32,7 @@ abstract class TestCase extends BaseTestCase
      */
     protected function clearCache()
     {
-        $commands = ['clear-compiled', 'cache:clear', 'view:clear', 'config:clear', 'route:clear'];
+        $commands = ['cache:clear'];
         foreach ($commands as $command) {
             Artisan::call($command);
         }
