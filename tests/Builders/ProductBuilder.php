@@ -29,6 +29,11 @@ class ProductBuilder{
         return $this;
     }
 
+    public function setQuantity($quantity){
+        $this->fields['quantity'] = $quantity;
+        return $this;
+    }
+
     public function setCategoryId($categoryId){
         $this->fields['category_id'] = $categoryId;
         return $this;

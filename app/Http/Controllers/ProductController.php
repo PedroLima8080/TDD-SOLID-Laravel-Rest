@@ -29,6 +29,22 @@ class ProductController extends Controller
         }
     }
 
+    public function changeQuantity($action, Product $product, Request $request){
+        $data = $request->all();
+        $quantity = $data['quantity'];
+
+        if($action === 'increase')
+            $product->update([
+                'quantity' => $product->quantity + $quantity
+            ]);
+        else if($action === 'decrease')
+            $product->update([
+                'quantity' => $product->quantity - $quantity
+            ]);
+
+        return redirect()->route('app.product.index');
+    }
+
     public function index(){
         $products = Product::orderBy('title', 'ASC')->get();
         return view('product.index', compact('products'));
