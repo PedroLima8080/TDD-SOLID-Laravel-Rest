@@ -29,9 +29,10 @@ class ProductController extends Controller
         }
     }
 
-    public function changeQuantity($action, Product $product, Request $request){
+    public function changeQuantity(Product $product, Request $request){
         $data = $request->all();
         $quantity = $data['quantity'];
+        $action = $data['action'];
 
         if($action === 'increase')
             $product->update([

@@ -26,7 +26,7 @@ class ChangeQuantityTest extends TestCase
         $product = (new ProductBuilder)->setQuantity(5)->create();
         $increaseCount = 2;
 
-        $this->actingAs($user)->post(route('app.product.change_quantity', ['action' => 'increase', 'product' => $product->id]), ['quantity' => $increaseCount])
+        $this->actingAs($user)->post(route('app.product.change_quantity', ['product' => $product->id]), ['quantity' => $increaseCount, 'action' => 'increase'])
             ->assertStatus(302)
             ->assertRedirect(route('app.product.index'));
 
@@ -43,7 +43,7 @@ class ChangeQuantityTest extends TestCase
         $product = (new ProductBuilder)->setQuantity(5)->create();
         $increaseCount = 2;
 
-        $this->actingAs($user)->post(route('app.product.change_quantity', ['action' => 'decrease', 'product' => $product->id]), ['quantity' => $increaseCount])
+        $this->actingAs($user)->post(route('app.product.change_quantity', ['product' => $product->id]), ['quantity' => $increaseCount, 'action' => 'decrease'])
             ->assertStatus(302)
             ->assertRedirect(route('app.product.index'));
 
